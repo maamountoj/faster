@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { ExampleComponent } from 'fasti-redux'
+import testv from 'fasti-redux'
 import 'fasti-redux/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+return <h1>{console.log(testv)}</h1>
 }
 
 export default App

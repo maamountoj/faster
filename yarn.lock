@@ -4797,6 +4797,18 @@ fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fasti-redux@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fasti-redux/-/fasti-redux-1.0.0.tgz#fb9b4cbc40725f460e60750230d2f2c8bfe618af"
+  integrity sha512-NORzPcljojbbvhZkOUtJWqdFhQyIPERa3t09svKYtJ+MWdcv9ZO83OWVh1k7Y0SaG+RzK+ncQ1+PpD1P7ntzrw==
+
+fasti-redux@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/fasti-redux/-/fasti-redux-1.0.1.tgz#263f4e8f8c768138b68fe7ba678adbd6285c3f57"
+  integrity sha512-x8JbFtfkNNbqZAro+FXM0aScGYnLgZspBiBxQMV+kvJ/z+k3cw+ugYz02kZCTMJqz7PJ7pyURBpN7ttwj+UYkw==
+  dependencies:
+    fasti-redux "1.0.0"
+
 fastparse@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
