@@ -1,0 +1,2 @@
+(this["webpackJsonpfasti-redux-example"]=this["webpackJsonpfasti-redux-example"]||[]).push([[0],[,,,function(e,t,n){e.exports=n(10)},function(e,t,n){},,,,,function(e,t,n){},function(e,t,n){"use strict";n.r(t);n(4);var o=n(0),r=n.n(o),s=n(2),u=n.n(s),a=(n(11),{test:"test"}),c=(n(9),function(){return r.a.createElement("h1",null,console.log(a))});u.a.render(r.a.createElement(c,null),document.getElementById("root"))}],[[3,1,2]]]);
+//# sourceMappingURL=main.7003c688.chunk.js.map
