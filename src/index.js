@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from './styles.module.css'
-import {ExampleComponent as Ex} from 'fasti-redux'
+import {fetchApi, getApi, postApi, putApi, deleteApi } from './funtions/apiFn'
+import {dispatchActions,dispatchActionsWithApi} from './funtions/actionsFn'
+import {actionsCondition} from './funtions/reducersFn'
 
 /* export const ExampleComponent = ({ text }) => {
   return <div className={styles.test}>Example Component: {text}
@@ -8,5 +8,7 @@ import {ExampleComponent as Ex} from 'fasti-redux'
   </div>
 } */
 export default {
- test:'test'
+ test:'test',
+ fetchApi, getApi, postApi, putApi, deleteApi,dispatchActions,dispatchActionsWithApi,
+ actionsCondition 
 } 
