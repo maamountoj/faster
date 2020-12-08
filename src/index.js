@@ -1,6 +1,5 @@
-import React from 'react'
-import styles from './styles.module.css'
+import axios from 'axios'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+import { dispatchActions, dispatchActionsWithApi } from './funtions/actionsFn'
+import { actionsCondition } from './funtions/reducersFn'
+export { axios, dispatchActions, dispatchActionsWithApi, actionsCondition }
