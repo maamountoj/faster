@@ -1,9 +1,9 @@
 import { dispatchActionsWithApi } from 'fasti-redux'
-export const GET_POSTS = 'GET POSTS'
+/* export const GET_POSTS = 'GET POSTS'
 export const START_LOADING_GET_POSTS = 'START_LOADING_GET_POSTS'
 export const STOP_LOADING_GET_POSTS = 'STOP_LOADING_GET_POSTS'
 
-/* export const startLoadingPosts = () => ({
+export const startLoadingPosts = () => ({
   type: START_LOADING_GET_POSTS,
   payload: true
 })

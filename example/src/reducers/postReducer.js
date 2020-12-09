@@ -1,7 +1,7 @@
 import { actionsCondition } from 'fasti-redux'
-import * as actions from '../actions/postActions'
+/* import * as actions from '../actions/postActions'
 
-/* export const initialState = {
+export const initialState = {
   loadingGetPost: false,
   post: {}
 }

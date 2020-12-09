@@ -1,6 +1,6 @@
 import { actionsCondition } from 'fasti-redux'
-import * as actions from '../actions/commentsActions'
-/* 
+/* import * as actions from '../actions/commentsActions'
+
 export const initialState = {
   loadingGetComments: false,
   comments: []
