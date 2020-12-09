@@ -5,7 +5,7 @@ export const actionsCondition = (data) => {
   let reducerMap = {}
   let initialState = {}
   data.map((val) => {
-    const { key, stateKey, initStateKey, fn } = val
+    const { key, stateKey, initStateKey, setState } = val
     const newVal = key.replace(/[A-Z]/g, (m) => '_' + m).toUpperCase()
     initialState = {
       ...initialState,
@@ -16,10 +16,10 @@ export const actionsCondition = (data) => {
       ...reducerMap,
       [newVal]: {
         next: (state, action) => {
-          if (has(val, 'fn')) {
+          if (has(val, 'setState')) {
             return {
               ...state,
-              [stateKey]: fn(state, action)
+              [stateKey]: setState(state, action)
             }
           } else {
             return {

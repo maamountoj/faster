@@ -1,7 +1,7 @@
 import * as actions from '../actions/postsActions'
 import { actionsCondition } from 'fasti-redux'
 
-export const initialState = {
+/* export const initialState = {
   loadingGetPosts: false,
   posts: []
 }
@@ -17,11 +17,11 @@ export default function postsReducer(state = initialState, action) {
     default:
       return state
   }
-}
+} */
 /* ***************** Posts Reducer ***************/
-/* 
+
 const postsReducer = actionsCondition([
   { key: 'getPosts', stateKey: 'posts', initStateKey: [] }
 ])
 
-export default postsReducer */
+export default postsReducer

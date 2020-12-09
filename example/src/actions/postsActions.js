@@ -3,7 +3,7 @@ export const GET_POSTS = 'GET POSTS'
 export const START_LOADING_GET_POSTS = 'START_LOADING_GET_POSTS'
 export const STOP_LOADING_GET_POSTS = 'STOP_LOADING_GET_POSTS'
 
-export const startLoadingPosts = () => ({
+/* export const startLoadingPosts = () => ({
   type: START_LOADING_GET_POSTS,
   payload: true
 })
@@ -30,13 +30,13 @@ export function getPostsAction() {
     }
     dispatch(stopLoadingPosts())
   }
-}
+} */
 /* Became To like this */
-/* const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
+const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
 export const { getPostsAction } = dispatchActionsWithApi([
   {
     name: 'getPosts',
     url: API_POSTS_URL,
     method: 'get'
   }
-]) */
+])
