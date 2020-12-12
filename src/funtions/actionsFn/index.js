@@ -3,15 +3,12 @@ import { keys, has, isEmpty } from 'lodash'
 import { fetchApi } from '../apiFn'
 
 export const prepareActions = (val) => {
-  let dataActions = []
   const newVal = val.replace(/[A-Z]/g, (m) => '_' + m).toUpperCase()
-  dataActions = [
-    ...dataActions,
+  return createActions(
     `START_LOADING_${newVal}`,
     `${newVal}`,
     `STOP_LOADING_${newVal}`
-  ]
-  return createActions(...dataActions)
+  )
 }
 export const dispatchActions = (data) => {
   let dataFns = {}
