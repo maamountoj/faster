@@ -1,4 +1,6 @@
 import { actionsCondition } from 'fasti-redux'
+
+/* *** without easy-redux *** */
 /* import * as actions from '../actions/commentsActions'
 
 export const initialState = {
@@ -9,6 +11,7 @@ export const initialState = {
 export default function commentsReducer(state = initialState, action) {
   switch (action.type) {
     case actions.START_LOADING_GET_COMMENTS:
+      
       return { ...state, loadingGetComments: true }
     case actions.GET_COMMENTS:
       return { comments: action.payload, loading: false }
@@ -18,6 +21,8 @@ export default function commentsReducer(state = initialState, action) {
       return state
   }
 } */
+
+/* *** with easy-redux *** */
 /* ***************** Post Reducer ***************/
 
 const commentsReducer = actionsCondition([

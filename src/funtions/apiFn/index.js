@@ -129,7 +129,7 @@ const fetchApi = async ({ api, method, url, params, body, config }) => {
           : (res = await axios[method](path, config))
       }
 
-      response = res.data
+      response = res
     } else if (method === 'post' || method === 'put') {
       if (!isEmpty(api)) {
         isEmpty(config)
@@ -141,7 +141,7 @@ const fetchApi = async ({ api, method, url, params, body, config }) => {
           : (res = await axios[method](path, body))
       }
 
-      response = res.data
+      response = res
     } else {
       console.error('Ensure your method please')
     }

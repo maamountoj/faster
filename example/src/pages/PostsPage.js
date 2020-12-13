@@ -11,7 +11,6 @@ const PostsPage = () => {
   const posts = useSelector((state) => state.posts.posts)
   useEffect(() => {
     dispatch(getPostsAction())
-    //dispatch(getPostsAction())
   }, [dispatch])
 
   const renderPosts = () => {

@@ -1,5 +1,6 @@
 import { dispatchActionsWithApi } from 'fasti-redux'
 
+/* *** without easy-redux *** */
 /* export const GET_POST = 'GET POST'
 export const START_LOADING_GET_POST = 'START_LOADING_GET_POST'
 export const STOP_LOADING_GET_POST = 'STOP_LOADING_GET_POST'
@@ -35,11 +36,21 @@ export function getPostAction(id) {
   }
 } */
 /* Became To like this */
+/* *** with easy-redux *** */
 const API_POST_URL = `https://jsonplaceholder.typicode.com/posts/[id]`
 export const { getPostAction } = dispatchActionsWithApi([
   {
     name: 'getPost',
     url: API_POST_URL,
-    method: 'get'
+    method: 'get',
+    config:{
+      headers: {
+        Authorization: 'Bearer hjkhjkhjk' //the token is a variable which holds the token
+      }
+     },
+    setPayload:(data)=>{
+      console.log(data)
+      return data?.res.data
+    }
   }
 ])

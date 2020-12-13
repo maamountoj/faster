@@ -1,4 +1,6 @@
 import { dispatchActionsWithApi } from 'fasti-redux'
+
+/* *** without easy-redux *** */
 /* 
 
 export const GET_COMMENTS = 'GET_COMMENTS'
@@ -35,6 +37,7 @@ export function getCommentsAction(postId) {
   }
 } */
 /* Became To like this */
+/* *** with easy-redux *** */
 const API_COMMENTS_URL = `https://jsonplaceholder.typicode.com/comments?postId=[postId]`
 export const { getCommentsAction } = dispatchActionsWithApi([
   {

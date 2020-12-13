@@ -1,4 +1,6 @@
 import { dispatchActionsWithApi } from 'fasti-redux'
+
+/* *** without easy-redux *** */
 /* export const GET_POSTS = 'GET POSTS'
 export const START_LOADING_GET_POSTS = 'START_LOADING_GET_POSTS'
 export const STOP_LOADING_GET_POSTS = 'STOP_LOADING_GET_POSTS'
@@ -32,6 +34,7 @@ export function getPostsAction() {
   }
 } */
 /* Became To like this */
+/* *** with easy-redux *** */
 const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
 export const { getPostsAction } = dispatchActionsWithApi([
   {

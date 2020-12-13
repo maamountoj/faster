@@ -1,5 +1,7 @@
-//import * as actions from '../actions/postsActions'
 import { actionsCondition } from 'fasti-redux'
+
+/* *** without easy-redux *** */
+/* import * as actions from '../actions/commentsActions'
 
 /* export const initialState = {
   loadingGetPosts: false,
@@ -18,6 +20,8 @@ export default function postsReducer(state = initialState, action) {
       return state
   }
 } */
+/* *** with easy-redux *** */
+
 /* ***************** Posts Reducer ***************/
 
 const postsReducer = actionsCondition([

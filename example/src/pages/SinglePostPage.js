@@ -17,9 +17,10 @@ const SinglePostPage = ({ match }) => {
   const comments = useSelector((state) => state.comments.comments)
   useEffect(() => {
     const { id } = match.params
-
+    /* *** without easy-redux *** */
     //dispatch(getPostAction(id))
     //dispatch(getCommentsAction(id))
+    /* *** with easy-redux *** */
     dispatch(getPostAction({ params: { id } }))
     dispatch(getCommentsAction({ params: { postId: id } }))
   }, [dispatch, match])
