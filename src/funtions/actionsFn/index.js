@@ -90,7 +90,9 @@ export const dispatchActionsWithApi = (data) => {
           /* console.log(res1);
           const res = await api.post(urlApi, data); */
           has(val, 'setPayload')
-            ? dispatch(dispatchActions[partsKeys[1]](val?.setPayload({ data, res })))
+            ? dispatch(
+                dispatchActions[partsKeys[1]](val?.setPayload({ data, res }))
+              )
             : dispatch(dispatchActions[partsKeys[1]](res.data))
 
           dispatch(dispatchActions[partsKeys[2]](false))

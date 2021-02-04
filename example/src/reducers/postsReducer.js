@@ -3,7 +3,7 @@ import { actionsCondition } from 'fasti-redux'
 /* *** without easy-redux *** */
 /* import * as actions from '../actions/commentsActions'
 
-/* export const initialState = {
+export const initialState = {
   loadingGetPosts: false,
   posts: []
 }
