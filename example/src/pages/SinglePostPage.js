@@ -9,8 +9,11 @@ import { Comment } from '../components/Comment'
 
 const SinglePostPage = ({ match }) => {
   const dispatch = useDispatch()
-  const loading = useSelector((state) => {
-    return { post: state.post.loadingGetPost, comments: state.comments.loading }
+  const { loadingGetPost, loadingGetComments } = useSelector((state) => {
+    return {
+      loadingGetPost: state.post.loadingGetPost,
+      loadingGetComments: state.comments.loadingGetComments
+    }
   })
   const state = useSelector((state) => state)
   const post = useSelector((state) => state.post.post)
@@ -26,12 +29,12 @@ const SinglePostPage = ({ match }) => {
   }, [dispatch, match])
 
   const renderPost = () => {
-    if (loading.post) return <p>Loading post...</p>
+    if (loadingGetPost) return <p>Loading post...</p>
     return <Post post={post} />
   }
 
   const renderComments = () => {
-    if (loading.comments) return <p>Loading comments...</p>
+    if (loadingGetComments) return <p>Loading comments...</p>
     return comments.map((comment) => (
       <Comment key={comment.id} comment={comment} />
     ))
