@@ -9,8 +9,8 @@ export const actionsCondition = (data) => {
     const newVal = key.replace(/[A-Z]/g, (m) => '_' + m).toUpperCase()
     initialState = {
       ...initialState,
-      [stateKey]: initStateKey,
-      [`loading${key.charAt(0).toUpperCase() + key.slice(1)}`]: false
+      [stateKey]: { data: initStateKey, loading: false, error: '' }
+      // [`loading${key.charAt(0).toUpperCase() + key.slice(1)}`]: false
     }
     reducerMap = {
       ...reducerMap,
@@ -19,12 +19,12 @@ export const actionsCondition = (data) => {
           if (has(val, 'setState')) {
             return {
               ...state,
-              [stateKey]: setState(state, action)
+              [stateKey]: { ...state[stateKey], data: setState(state, action) }
             }
           } else {
             return {
               ...state,
-              [stateKey]: action?.payload
+              [stateKey]: { ...state[stateKey], data: action?.payload }
             }
           }
         }
@@ -33,7 +33,8 @@ export const actionsCondition = (data) => {
         next: (state, action) => {
           return {
             ...state,
-            [`loading${key.charAt(0).toUpperCase() + key.slice(1)}`]: true
+            [stateKey]: { ...state[stateKey], loading: true }
+            // [`loading${key.charAt(0).toUpperCase() + key.slice(1)}`]: true
           }
         }
       },
@@ -41,7 +42,16 @@ export const actionsCondition = (data) => {
         next: (state, action) => {
           return {
             ...state,
-            [`loading${key.charAt(0).toUpperCase() + key.slice(1)}`]: false
+            [stateKey]: { ...state[stateKey], loading: false }
+            //[`loading${key.charAt(0).toUpperCase() + key.slice(1)}`]: false
+          }
+        }
+      },
+      [`ERROR_${newVal}`]: {
+        next: (state, action) => {
+          return {
+            ...state,
+            [stateKey]: { ...state[stateKey], error: action.payload }
           }
         }
       }

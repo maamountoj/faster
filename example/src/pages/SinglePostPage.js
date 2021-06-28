@@ -11,13 +11,13 @@ const SinglePostPage = ({ match }) => {
   const dispatch = useDispatch()
   const { loadingGetPost, loadingGetComments } = useSelector((state) => {
     return {
-      loadingGetPost: state.post.loadingGetPost,
-      loadingGetComments: state.comments.loadingGetComments
+      loadingGetPost: state.post?.post?.loading,
+      loadingGetComments: state.comments?.comments?.loading
     }
   })
   const state = useSelector((state) => state)
-  const post = useSelector((state) => state.post.post)
-  const comments = useSelector((state) => state.comments.comments)
+  const post = useSelector((state) => state.post.post?.data)
+  const comments = useSelector((state) => state.comments.comments?.data)
   useEffect(() => {
     const { id } = match.params
     /* *** without easy-redux *** */

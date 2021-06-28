@@ -7,8 +7,8 @@ import { Post } from '../components/Post'
 
 const PostsPage = () => {
   const dispatch = useDispatch()
-  const loadingGetPosts = useSelector((state) => state.posts.loadingGetPosts)
-  const posts = useSelector((state) => state.posts.posts)
+  const loadingGetPosts = useSelector((state) => state.posts?.posts?.loading)
+  const posts = useSelector((state) => state.posts.posts?.data)
   useEffect(() => {
     dispatch(getPostsAction())
   }, [dispatch])

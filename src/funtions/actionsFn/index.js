@@ -7,14 +7,15 @@ export const prepareActions = (val) => {
   return createActions(
     `START_LOADING_${newVal}`,
     `${newVal}`,
-    `STOP_LOADING_${newVal}`
+    `STOP_LOADING_${newVal}`,
+    `ERROR_${newVal}`
   )
 }
 export const dispatchActions = (data) => {
   let dataFns = {}
   data?.map((val) => {
     const dispatchActions = prepareActions(val?.name)
-    const slice = 3
+    const slice = 4
     let index = 0
     while (index < keys(dispatchActions).length) {
       const partsKeys = keys(dispatchActions).splice(index, slice)
@@ -22,14 +23,16 @@ export const dispatchActions = (data) => {
         ...dataFns,
         [`${val?.name}Action`]: (data = {}) => async (dispatch) => {
           console.log(data)
-          /*  console.log(dispatchActions[partsKeys[0]](true));
-          console.log(dispatchActions[partsKeys[1]](fn(data)));
-          console.log(dispatchActions[partsKeys[2]](false)); */
           dispatch(dispatchActions[partsKeys[0]](true))
-          has(val, 'setPayload')
-            ? dispatch(dispatchActions[partsKeys[1]](val.setPayload(data)))
-            : dispatch(dispatchActions[partsKeys[1]](data))
-          dispatch(dispatchActions[partsKeys[2]](false))
+          try {
+            has(val, 'setPayload')
+              ? dispatch(dispatchActions[partsKeys[1]](val.setPayload(data)))
+              : dispatch(dispatchActions[partsKeys[1]](data))
+            dispatch(dispatchActions[partsKeys[2]](false))
+          } catch (error) {
+            dispatch(dispatchActions[partsKeys[2]](false))
+            dispatch(dispatchActions[partsKeys[3]](error))
+          }
         }
       }
       index = index + slice
@@ -43,7 +46,7 @@ export const dispatchActionsWithApi = (data) => {
   data?.map((val) => {
     const { api, name, url, method, config } = val
     const dispatchActions = prepareActions(name)
-    const slice = 3
+    const slice = 4
     let index = 0
     //val = val.charAt(0).toUpperCase() + val.slice(1);
     while (index < keys(dispatchActions).length) {
@@ -54,48 +57,53 @@ export const dispatchActionsWithApi = (data) => {
           let res
           dispatch(dispatchActions[partsKeys[0]](true))
           console.log(data)
-          if (!isEmpty(api)) {
-            has(data, 'params')
-              ? (res = await fetchApi({
-                  api: api,
-                  method,
-                  url,
-                  params: data?.params,
-                  body: has(data, 'body') && method == 'get' ? '' : data.body,
-                  config
-                }))
-              : (res = await fetchApi({
-                  api: api,
-                  method,
-                  url,
-                  body: method == 'get' ? '' : data,
-                  config
-                }))
-          } else {
-            has(data, 'params')
-              ? (res = await fetchApi({
-                  method,
-                  url,
-                  params: data?.params,
-                  body: has(data, 'body') && method == 'get' ? '' : data.body,
-                  config
-                }))
-              : (res = await fetchApi({
-                  method,
-                  url,
-                  body: method == 'get' ? '' : data,
-                  config
-                }))
-          }
-          /* console.log(res1);
-          const res = await api.post(urlApi, data); */
-          has(val, 'setPayload')
-            ? dispatch(
-                dispatchActions[partsKeys[1]](val?.setPayload({ data, res }))
-              )
-            : dispatch(dispatchActions[partsKeys[1]](res.data))
+          try {
+            if (!isEmpty(api)) {
+              has(data, 'params')
+                ? (res = await fetchApi({
+                    api: api,
+                    method,
+                    url,
+                    params: data?.params,
+                    body: has(data, 'body') && method == 'get' ? '' : data.body,
+                    config
+                  }))
+                : (res = await fetchApi({
+                    api: api,
+                    method,
+                    url,
+                    body: method == 'get' ? '' : data,
+                    config
+                  }))
+            } else {
+              has(data, 'params')
+                ? (res = await fetchApi({
+                    method,
+                    url,
+                    params: data?.params,
+                    body: has(data, 'body') && method == 'get' ? '' : data.body,
+                    config
+                  }))
+                : (res = await fetchApi({
+                    method,
+                    url,
+                    body: method == 'get' ? '' : data,
+                    config
+                  }))
+            }
+            /* console.log(res1);
+            const res = await api.post(urlApi, data); */
+            has(val, 'setPayload')
+              ? dispatch(
+                  dispatchActions[partsKeys[1]](val?.setPayload({ data, res }))
+                )
+              : dispatch(dispatchActions[partsKeys[1]](res.data))
 
-          dispatch(dispatchActions[partsKeys[2]](false))
+            dispatch(dispatchActions[partsKeys[2]](false))
+          } catch (error) {
+            dispatch(dispatchActions[partsKeys[2]](false))
+            dispatch(dispatchActions[partsKeys[3]](error))
+          }
         }
       }
       index = index + slice
