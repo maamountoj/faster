@@ -36,10 +36,16 @@ export function getPostsAction() {
 /* Became To like this */
 /* *** with easy-redux *** */
 const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
-export const { getPostsAction } = dispatchActionsWithApi([
+export const { getPostsAction, addPostAction } = dispatchActionsWithApi([
   {
     name: 'getPosts',
     url: API_POSTS_URL,
     method: 'get'
+  },
+  {
+    name: 'addPost',
+    url: API_POSTS_URL,
+    method: 'get'
   }
 ])
+console.log(addPostAction())

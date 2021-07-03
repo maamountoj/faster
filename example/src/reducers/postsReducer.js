@@ -4,18 +4,31 @@ import { actionsCondition } from 'fasti-redux'
 /* import * as actions from '../actions/commentsActions'
 
 export const initialState = {
-  loadingGetPosts: false,
-  posts: []
+  data: [],
+  errorAddPost: "",
+  errorGetPosts: "",
+  loadingAddPost: true,
+  loadingGetPosts: false
 }
 
 export default function postsReducer(state = initialState, action) {
   switch (action.type) {
-    case actions.START_LOADING_GET_POSTS:
+    case START_LOADING_GET_POSTS:
       return { ...state, loadingGetPosts: true }
-    case actions.GET_POSTS:
-      return { posts: action.payload, loading: false }
-    case actions.STOP_LOADING_GET_POSTS:
+    case GET_POSTS:
+      return {  ...state,posts: action.payload }
+    case STOP_LOADING_GET_POSTS:
       return { ...state, loadingGetPosts: false }
+    case ERROR_GET_POSTS:
+      return { ...state, errorGetPosts: action.payload }
+    case START_LOADING_ADD_POST:
+      return { ...state, loadingAddPost: true }
+    case ADD_POST:
+      return {  ...state,data: [...state.data ,action.payload] }
+    case STOP_LOADING_ADD_POST:
+      return { ...state, loadingAddPost: false }
+    case ERROR_ADD_POST:
+      return { ...state, errorAddPost: action.payload }
     default:
       return state
   }
@@ -25,7 +38,24 @@ export default function postsReducer(state = initialState, action) {
 /* ***************** Posts Reducer ***************/
 
 const postsReducer = actionsCondition([
-  { key: 'getPosts', stateKey: 'posts', initStateKey: [] }
+  {
+    key: 'getPosts',
+    stateKey: 'posts',
+    initStateKey: [],
+    anotherActions: [
+      {
+        key: 'addPost',
+        setState: (posts, action) => {
+          console.log({ posts, action })
+          console.log('postsnew', {
+            data: posts?.data,
+            payload: action.payload
+          })
+          return [...posts?.data, ...action.payload]
+        }
+      }
+    ]
+  }
 ])
 
 export default postsReducer

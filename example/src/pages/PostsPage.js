@@ -1,18 +1,26 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getPostsAction } from '../actions/postsActions'
+import { getPostsAction, addPostAction } from '../actions/postsActions'
 
 import { Post } from '../components/Post'
 
 const PostsPage = () => {
   const dispatch = useDispatch()
-  const loadingGetPosts = useSelector((state) => state.posts?.posts?.loading)
+  const loadingGetPosts = useSelector(
+    (state) => state.posts?.posts?.loadingGetPosts
+  )
+  const loadingAddPost = useSelector(
+    (state) => state.posts?.posts?.loadingAddPost
+  )
   const posts = useSelector((state) => state.posts.posts?.data)
   useEffect(() => {
     dispatch(getPostsAction())
   }, [dispatch])
-
+  const addPost = () => {
+    console.log(addPostAction())
+    dispatch(addPostAction())
+  }
   const renderPosts = () => {
     if (loadingGetPosts) return <p>Loading posts...</p>
     return posts.map((post) => <Post key={post.id} post={post} excerpt />)
@@ -21,6 +29,14 @@ const PostsPage = () => {
   return (
     <section>
       <h1>Posts</h1>
+      <strong>{posts?.length}</strong>
+      <button
+        className='button'
+        style={{ borderWidth: 'inherit' }}
+        onClick={addPost}
+      >
+        {loadingAddPost ? '...Loading' : 'Add Post'}
+      </button>
       {renderPosts()}
     </section>
   )

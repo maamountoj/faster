@@ -14,24 +14,25 @@ export const prepareActions = (val) => {
 export const dispatchActions = (data) => {
   let dataFns = {}
   data?.map((val) => {
-    const dispatchActions = prepareActions(val?.name)
+    const dispatchPrepareActions = prepareActions(val?.name)
     const slice = 4
     let index = 0
-    while (index < keys(dispatchActions).length) {
-      const partsKeys = keys(dispatchActions).splice(index, slice)
+    while (index < keys(dispatchPrepareActions).length) {
+      const partsKeys = keys(dispatchPrepareActions).splice(index, slice)
       dataFns = {
         ...dataFns,
         [`${val?.name}Action`]: (data = {}) => async (dispatch) => {
-          console.log(data)
-          dispatch(dispatchActions[partsKeys[0]](true))
+          dispatch(dispatchPrepareActions[partsKeys[0]](true))
           try {
             has(val, 'setPayload')
-              ? dispatch(dispatchActions[partsKeys[1]](val.setPayload(data)))
-              : dispatch(dispatchActions[partsKeys[1]](data))
-            dispatch(dispatchActions[partsKeys[2]](false))
+              ? dispatch(
+                  dispatchPrepareActions[partsKeys[1]](val.setPayload(data))
+                )
+              : dispatch(dispatchPrepareActions[partsKeys[1]](data))
+            dispatch(dispatchPrepareActions[partsKeys[2]](false))
           } catch (error) {
-            dispatch(dispatchActions[partsKeys[2]](false))
-            dispatch(dispatchActions[partsKeys[3]](error))
+            dispatch(dispatchPrepareActions[partsKeys[2]](false))
+            dispatch(dispatchPrepareActions[partsKeys[3]](error))
           }
         }
       }
@@ -45,18 +46,17 @@ export const dispatchActionsWithApi = (data) => {
   let dataFns = {}
   data?.map((val) => {
     const { api, name, url, method, config } = val
-    const dispatchActions = prepareActions(name)
+    const dispatchPrepareActions = prepareActions(name)
     const slice = 4
     let index = 0
     //val = val.charAt(0).toUpperCase() + val.slice(1);
-    while (index < keys(dispatchActions).length) {
-      const partsKeys = keys(dispatchActions).splice(index, slice)
+    while (index < keys(dispatchPrepareActions).length) {
+      const partsKeys = keys(dispatchPrepareActions).splice(index, slice)
       dataFns = {
         ...dataFns,
         [`${name}Action`]: (data) => async (dispatch) => {
           let res
-          dispatch(dispatchActions[partsKeys[0]](true))
-          console.log(data)
+          dispatch(dispatchPrepareActions[partsKeys[0]](true))
           try {
             if (!isEmpty(api)) {
               has(data, 'params')
@@ -95,21 +95,22 @@ export const dispatchActionsWithApi = (data) => {
             const res = await api.post(urlApi, data); */
             has(val, 'setPayload')
               ? dispatch(
-                  dispatchActions[partsKeys[1]](val?.setPayload({ data, res }))
+                  dispatchPrepareActions[partsKeys[1]](
+                    val?.setPayload({ data, res })
+                  )
                 )
-              : dispatch(dispatchActions[partsKeys[1]](res.data))
+              : dispatch(dispatchPrepareActions[partsKeys[1]](res.data))
 
-            dispatch(dispatchActions[partsKeys[2]](false))
+            dispatch(dispatchPrepareActions[partsKeys[2]](false))
           } catch (error) {
-            dispatch(dispatchActions[partsKeys[2]](false))
-            dispatch(dispatchActions[partsKeys[3]](error))
+            dispatch(dispatchPrepareActions[partsKeys[2]](false))
+            dispatch(dispatchPrepareActions[partsKeys[3]](error))
           }
         }
       }
       index = index + slice
     }
   })
-
   return dataFns
 }
 
