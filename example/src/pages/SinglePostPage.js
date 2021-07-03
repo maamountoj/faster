@@ -42,7 +42,6 @@ const SinglePostPage = ({ match }) => {
 
   return (
     <section>
-      {console.log(state)}
       {renderPost()}
       <h2>Comments</h2>
       {renderComments()}

@@ -27,7 +27,6 @@ const createReducersMap = (stateKey, mapReducer, data) => {
       },
       [`START_LOADING_${newAction}`]: {
         next: (state, action) => {
-          alert(`START_LOADING_${newAction}`)
           return {
             ...state,
             [stateKey]: {
@@ -42,7 +41,6 @@ const createReducersMap = (stateKey, mapReducer, data) => {
       },
       [`STOP_LOADING_${newAction}`]: {
         next: (state, action) => {
-          alert(`STOP_LOADING_${newAction}`)
           return {
             ...state,
             [stateKey]: {

@@ -48,4 +48,3 @@ export const { getPostsAction, addPostAction } = dispatchActionsWithApi([
     method: 'get'
   }
 ])
-console.log(addPostAction())

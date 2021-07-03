@@ -43,13 +43,12 @@ export const { getPostAction } = dispatchActionsWithApi([
     name: 'getPost',
     url: API_POST_URL,
     method: 'get',
-    config:{
+    config: {
       headers: {
         Authorization: 'Bearer hjkhjkhjk' //the token is a variable which holds the token
       }
-     },
-    setPayload:(data)=>{
-      console.log(data)
+    },
+    setPayload: (data) => {
       return data?.res.data
     }
   }

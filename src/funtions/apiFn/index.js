@@ -6,9 +6,6 @@ const getWithParamsUrl = (path, params) => {
   let index = 0
   let replacePath
   if (!isEmpty(params)) {
-    path.replace(regex, (match, name, surname) =>
-      console.log(`${surname}, ${name}`)
-    )
     replacePath = path.replace(regex, (match, name, surname) => {
       let replaceStr = `${params[name]}`
       index = index + 1
@@ -44,7 +41,6 @@ const getApi = async ({ api, url, params, config }) => {
 }
 
 const postApi = async ({ api, url, params, body, config }) => {
-  console.log('postApi')
   let response = null
   let path = getWithParamsUrl(url, params)
   let res = null
@@ -112,7 +108,6 @@ const deleteApi = async ({ api, url, params, config }) => {
 
 const fetchApi = async ({ api, method, url, params, body, config }) => {
   method = method.toLowerCase()
-  console.log({ method, url, params, body, config })
   let error = null
   let response = null
   let path = getWithParamsUrl(url, params)

@@ -91,8 +91,6 @@ export const dispatchActionsWithApi = (data) => {
                     config
                   }))
             }
-            /* console.log(res1);
-            const res = await api.post(urlApi, data); */
             has(val, 'setPayload')
               ? dispatch(
                   dispatchPrepareActions[partsKeys[1]](

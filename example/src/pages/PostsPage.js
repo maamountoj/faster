@@ -18,7 +18,6 @@ const PostsPage = () => {
     dispatch(getPostsAction())
   }, [dispatch])
   const addPost = () => {
-    console.log(addPostAction())
     dispatch(addPostAction())
   }
   const renderPosts = () => {
