@@ -64,10 +64,9 @@ export const {
 ])
 ```
 
-## DispatchActions
+## DispatchActionsWithApi
 
-Dillinger is currently extended with the following plugins.
-Props on how to use them in your own application are linked below.
+DispatchActionsWithApi is function to create actions.
 
 | Options    | Description                                                                                                             |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
