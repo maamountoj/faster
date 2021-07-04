@@ -1,4 +1,4 @@
-# `react-sortablejs`
+# `easy-redux`
 
 > create reducers and actions quickly with types ('START_LOADING','STOP_LOADING','ERROR') will be create automaticaly
 
