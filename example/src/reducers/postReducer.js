@@ -1,4 +1,4 @@
-import { actionsCondition } from 'fasti-redux'
+import { actionsCondition } from 'easy-redux'
 
 /* *** without easy-redux *** */
 /* import * as actions from '../actions/commentsActions'

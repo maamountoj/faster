@@ -1,4 +1,4 @@
-import { dispatchActionsWithApi } from 'fasti-redux'
+import { dispatchActionsWithApi } from 'easy-redux'
 
 /* *** without easy-redux *** */
 /* export const GET_POST = 'GET POST'
