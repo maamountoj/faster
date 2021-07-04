@@ -44,9 +44,22 @@ const postsReducer = actionsCondition([
     initStateKey: [],
     anotherActions: [
       {
+        key: 'updatePost',
+        setState: (posts, action) => {
+          console.log({ posts, action })
+          return [
+            ...posts?.data.map((post) => {
+              if (post.id === action.payload.id) return action.payload
+              else return post
+            })
+          ]
+        }
+      },
+      {
         key: 'addPost',
         setState: (posts, action) => {
-          return [...posts?.data, ...action.payload]
+          console.log({ posts, action })
+          return [action.payload, ...posts?.data]
         }
       }
     ]

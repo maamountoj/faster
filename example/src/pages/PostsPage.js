@@ -18,7 +18,13 @@ const PostsPage = () => {
     dispatch(getPostsAction())
   }, [dispatch])
   const addPost = () => {
-    dispatch(addPostAction())
+    dispatch(
+      addPostAction({
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+      })
+    )
   }
   const renderPosts = () => {
     if (loadingGetPosts) return <p>Loading posts...</p>
@@ -28,14 +34,24 @@ const PostsPage = () => {
   return (
     <section>
       <h1>Posts</h1>
-      <strong>{posts?.length}</strong>
-      <button
-        className='button'
-        style={{ borderWidth: 'inherit' }}
-        onClick={addPost}
+      <div
+        style={{
+          display: 'flex',
+          width: '100%',
+          justifyContent: 'space-between'
+        }}
       >
-        {loadingAddPost ? '...Loading' : 'Add Post'}
-      </button>
+        <p>
+          <strong>Total:{posts?.length}</strong>
+        </p>
+        <button
+          className='button'
+          style={{ borderWidth: 'inherit', cursor: 'pointer' }}
+          onClick={addPost}
+        >
+          {loadingAddPost ? '...Loading' : 'Add Post'}
+        </button>
+      </div>
       {renderPosts()}
     </section>
   )

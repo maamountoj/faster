@@ -19,6 +19,7 @@ const App = () => {
         <Route exact path='/' component={DashboardPage} />
         <Route exact path='/posts' component={PostsPage} />
         <Route exact path='/posts/:id' component={SinglePostPage} />
+        {/* <Route exact path='/posts/:id' component={UpdatePostPage} /> */}
         <Redirect to='/' />
       </Switch>
     </Router>

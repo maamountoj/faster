@@ -38,7 +38,7 @@ export function getPostAction(id) {
 /* Became To like this */
 /* *** with easy-redux *** */
 const API_POST_URL = `https://jsonplaceholder.typicode.com/posts/[id]`
-export const { getPostAction } = dispatchActionsWithApi([
+export const { getPostAction, updatePostAction } = dispatchActionsWithApi([
   {
     name: 'getPost',
     url: API_POST_URL,

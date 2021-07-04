@@ -36,7 +36,12 @@ export function getPostsAction() {
 /* Became To like this */
 /* *** with easy-redux *** */
 const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
-export const { getPostsAction, addPostAction } = dispatchActionsWithApi([
+const API_POSTS_UPDATE_URL = 'https://jsonplaceholder.typicode.com/posts/[id]'
+export const {
+  getPostsAction,
+  addPostAction,
+  updatePostAction
+} = dispatchActionsWithApi([
   {
     name: 'getPosts',
     url: API_POSTS_URL,
@@ -45,6 +50,30 @@ export const { getPostsAction, addPostAction } = dispatchActionsWithApi([
   {
     name: 'addPost',
     url: API_POSTS_URL,
-    method: 'get'
+    method: 'POST',
+    setPayload: ({ data, res }) => {
+      console.log('data', { data, res })
+      res.data.title = 'test'
+      return res.data
+    },
+    config: {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }
+  },
+  {
+    name: 'updatePost',
+    url: API_POSTS_UPDATE_URL,
+    method: 'PUT',
+    setPayload: ({ data, res }) => {
+      console.log('data', { data, res })
+      return res.data
+    },
+    config: {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }
   }
 ])
