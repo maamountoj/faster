@@ -69,22 +69,14 @@ export const {
 Dillinger is currently extended with the following plugins.
 Props on how to use them in your own application are linked below.
 
-- Dispatch actions conditions
-- @param
-- (Required to be the same name of stateKey from actionsCondition)
-- for example : getPost to be getPostAction.
-- @param url .
-- @param method (required) The method to fetch api.
-- @param config .
-- @param setPayload.
-  | Options | Description |
-  | ------ | ------ |
-  | api | (option) The instance of axios with a custom config |
-  | name | (required) The name (camelCase) of the function action (Required to be the same name of stateKey from actionsCondition)|
-  | url | (required) The url of api |
-  | method | (required) The method to fetch api |
-  | config | (option) The config options for making requests |
-  | setPayload | (option) The callback to modify state and return with new value |
+| Options    | Description                                                                                                             |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| api        | (option) The instance of axios with a custom config                                                                     |
+| name       | (required) The name (camelCase) of the function action (Required to be the same name of stateKey from actionsCondition) |
+| url        | (required) The url of api                                                                                               |
+| method     | (required) The method to fetch api                                                                                      |
+| config     | (option) The config options for making requests                                                                         |
+| setPayload | (option) The callback to modify state and return with new value                                                         |
 
 ## License
 
