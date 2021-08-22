@@ -27,6 +27,9 @@ export const Post = ({ post, excerpt }) => {
     )
     setIsOpen(false)
   }
+  function toggleModal() {
+    setIsOpen(!modalIsOpen)
+  }
   useEffect(() => {
     setBody(post?.body)
     setTitle(post?.title)
@@ -50,8 +53,8 @@ export const Post = ({ post, excerpt }) => {
       </article>
       <CustomModal
         modalIsOpen={modalIsOpen}
-        className='myoverlay'
         contentLabel='Example Modal'
+        toggleModal={toggleModal}
       >
         <form>
           <h1>Update Post #{post?.id}</h1>

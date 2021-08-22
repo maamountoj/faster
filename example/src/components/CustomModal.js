@@ -1,11 +1,13 @@
 import React from 'react'
 import Modal from 'react-modal'
 
-function CustomModal({ children, modalIsOpen }) {
+function CustomModal({ children, modalIsOpen, toggleModal }) {
   return (
     <Modal
       isOpen={modalIsOpen}
-      className='myoverlay'
+      onRequestClose={toggleModal}
+      className='mymodal'
+      overlayClassName='myoverlay'
       contentLabel='Example Modal'
     >
       {children}

@@ -22,7 +22,6 @@ const PostsPage = () => {
     dispatch(getPostsAction())
   }, [dispatch])
   const addPost = () => {
-    alert(title)
     dispatch(
       addPostAction({
         title,
@@ -31,6 +30,8 @@ const PostsPage = () => {
       })
     )
     setIsOpen(false)
+    setTitle('')
+    setBody('')
   }
   const renderPosts = () => {
     if (loadingGetPosts) return <p>Loading posts...</p>
@@ -38,6 +39,9 @@ const PostsPage = () => {
   }
   function openModal() {
     setIsOpen(true)
+  }
+  function toggleModal() {
+    setIsOpen(!modalIsOpen)
   }
   return (
     <section>
@@ -57,8 +61,8 @@ const PostsPage = () => {
         </button>
         <CustomModal
           modalIsOpen={modalIsOpen}
-          className='myoverlay'
           contentLabel='Example Modal'
+          toggleModal={toggleModal}
         >
           <form>
             <h1>Add Post</h1>
@@ -82,7 +86,7 @@ const PostsPage = () => {
                 required
               />
             </label>
-            <button className='submit' onClick={addPost}>
+            <button className='button' onClick={addPost}>
               Submit
             </button>
           </form>
