@@ -37,15 +37,15 @@ export function getPostAction(id) {
 } */
 /* Became To like this */
 /* *** with easy-redux *** */
-const API_POST_URL = `https://jsonplaceholder.typicode.com/posts/[id]`
-export const { getPostAction, updatePostAction } = dispatchActionsWithApi([
+const API_POST_URL = `http://localhost:7071/posts?id=[id]`
+export const { getPostAction } = dispatchActionsWithApi([
   {
     name: 'getPost',
     url: API_POST_URL,
     method: 'get',
     config: {
       headers: {
-        Authorization: 'Bearer hjkhjkhjk' //the token is a variable which holds the token
+        //Authorization: 'Your Token' // if you have token
       }
     },
     setPayload: (data) => {

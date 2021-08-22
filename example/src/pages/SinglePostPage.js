@@ -15,7 +15,7 @@ const SinglePostPage = ({ match }) => {
       loadingGetComments: state.comments?.comments?.loading
     }
   })
-  const state = useSelector((state) => state)
+  //const state = useSelector((state) => state)
   const post = useSelector((state) => state.post.post?.data)
   const comments = useSelector((state) => state.comments.comments?.data)
   useEffect(() => {

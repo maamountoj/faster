@@ -38,7 +38,7 @@ export function getCommentsAction(postId) {
 } */
 /* Became To like this */
 /* *** with easy-redux *** */
-const API_COMMENTS_URL = `https://jsonplaceholder.typicode.com/comments?postId=[postId]`
+const API_COMMENTS_URL = `http://localhost:7071/comments?postId=[postId]`
 export const { getCommentsAction } = dispatchActionsWithApi([
   {
     name: 'getComments',

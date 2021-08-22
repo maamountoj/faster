@@ -23,7 +23,7 @@ export function getPostsAction() {
     dispatch(startLoadingPosts())
 
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+      const response = await fetch('http://localhost:7071/posts')
       const data = await response.json()
 
       dispatch(getPosts(data))
@@ -35,8 +35,8 @@ export function getPostsAction() {
 } */
 /* Became To like this */
 /* *** with easy-redux *** */
-const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
-const API_POSTS_UPDATE_URL = 'https://jsonplaceholder.typicode.com/posts/[id]'
+const API_POSTS_URL = 'http://localhost:7071/posts'
+const API_POSTS_UPDATE_URL = 'http://localhost:7071/posts/[id]'
 export const {
   getPostsAction,
   addPostAction,
@@ -45,7 +45,11 @@ export const {
   {
     name: 'getPosts',
     url: API_POSTS_URL,
-    method: 'get'
+    method: 'get',
+    setPayload: ({ data, res }) => {
+      console.log('data', JSON.stringify(res.data))
+      return res.data
+    }
   },
   {
     name: 'addPost',
@@ -53,7 +57,6 @@ export const {
     method: 'POST',
     setPayload: ({ data, res }) => {
       console.log('data', { data, res })
-      res.data.title = 'test'
       return res.data
     },
     config: {
