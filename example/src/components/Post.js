@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { updatePostAction } from '../actions/postsActions'
+import { deletePostAction, updatePostAction } from '../actions/postsActions'
 import '../assets/style.css'
 import CustomModal from './CustomModal'
 
@@ -43,18 +43,30 @@ export const Post = ({ post, excerpt }) => {
         {excerpt && (
           <>
             <Link to={`/posts/${post?.id}`} className='button'>
-              View Post
+              View
             </Link>
             <div className='button' onClick={openModal}>
-              Update Post
+              Update
+            </div>
+            <div
+              className='button'
+              onClick={() => {
+                dispatch(
+                  deletePostAction({
+                    params: { id: post?.id }
+                  })
+                )
+              }}
+            >
+              Delete
             </div>
           </>
         )}
       </article>
       <CustomModal
         modalIsOpen={modalIsOpen}
-        contentLabel='Example Modal'
         toggleModal={toggleModal}
+        contentLabel='Example Modal'
       >
         <form>
           <h1>Update Post #{post?.id}</h1>

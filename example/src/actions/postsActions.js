@@ -37,10 +37,12 @@ export function getPostsAction() {
 /* *** with easy-redux *** */
 const API_POSTS_URL = 'http://localhost:7071/posts'
 const API_POSTS_UPDATE_URL = 'http://localhost:7071/posts/[id]'
+const API_POSTS_DELETE_URL = 'http://localhost:7071/posts/[id]'
 export const {
   getPostsAction,
   addPostAction,
-  updatePostAction
+  updatePostAction,
+  deletePostAction
 } = dispatchActionsWithApi([
   {
     name: 'getPosts',
@@ -72,6 +74,20 @@ export const {
     setPayload: ({ data, res }) => {
       console.log('data', { data, res })
       return res.data
+    },
+    config: {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }
+  },
+  {
+    name: 'deletePost',
+    url: API_POSTS_DELETE_URL,
+    method: 'DELETE',
+    setPayload: ({ data, res }) => {
+      console.log('delete', { data, res })
+      return data.params.id
     },
     config: {
       headers: {

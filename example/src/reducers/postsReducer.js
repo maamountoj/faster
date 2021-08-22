@@ -55,6 +55,13 @@ const postsReducer = actionsCondition([
         }
       },
       {
+        key: 'deletePost',
+        setState: (posts, action) => {
+          console.log({ posts, action })
+          return [...posts?.data.filter((post) => post.id !== action.payload)]
+        }
+      },
+      {
         key: 'addPost',
         setState: (posts, action) => {
           console.log({ posts, action })
