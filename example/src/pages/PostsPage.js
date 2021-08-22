@@ -35,7 +35,7 @@ const PostsPage = () => {
   }
   const renderPosts = () => {
     if (loadingGetPosts) return <p>Loading posts...</p>
-    return posts.map((post) => <Post key={post.id} post={post} excerpt />)
+    return posts?.map((post) => <Post key={post.id} post={post} excerpt />)
   }
   function openModal() {
     setIsOpen(true)

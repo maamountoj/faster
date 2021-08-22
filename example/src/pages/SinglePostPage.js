@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getPostAction } from '../actions/postActions'
+import { getPostByIdAction } from '../actions/postActions'
 import { getCommentsAction } from '../actions/commentsActions'
 
 import { Post } from '../components/Post'
@@ -9,28 +9,28 @@ import { Comment } from '../components/Comment'
 
 const SinglePostPage = ({ match }) => {
   const dispatch = useDispatch()
-  const { loadingGetPost, loadingGetComments } = useSelector((state) => {
+  const { loadingGetPostById, loadingGetComments } = useSelector((state) => {
     return {
-      loadingGetPost: state.post?.post?.loading,
+      loadingGetPostById: state.postById?.postById?.loading,
       loadingGetComments: state.comments?.comments?.loading
     }
   })
   //const state = useSelector((state) => state)
-  const post = useSelector((state) => state.post.post?.data)
+  const postById = useSelector((state) => state.postById.postById?.data)
   const comments = useSelector((state) => state.comments.comments?.data)
   useEffect(() => {
     const { id } = match.params
     /* *** without easy-redux *** */
-    //dispatch(getPostAction(id))
+    //dispatch(getPostByIdAction(id))
     //dispatch(getCommentsAction(id))
     /* *** with easy-redux *** */
-    dispatch(getPostAction({ params: { id } }))
+    dispatch(getPostByIdAction({ params: { id } }))
     dispatch(getCommentsAction({ params: { postId: id } }))
   }, [dispatch, match])
 
   const renderPost = () => {
-    if (loadingGetPost) return <p>Loading post...</p>
-    return <Post post={post} />
+    if (loadingGetPostById) return <p>Loading post...</p>
+    return <Post post={postById} />
   }
 
   const renderComments = () => {
