@@ -1,5 +1,10 @@
-import axios from 'axios'
-
 import { dispatchActions, dispatchActionsWithApi } from './funtions/actionsFn'
 import { actionsCondition } from './funtions/reducersFn'
-export { dispatchActions, dispatchActionsWithApi, actionsCondition }
+//import { reduxActions } from './funtions/reduxFn'
+
+export {
+  dispatchActions,
+  dispatchActionsWithApi,
+  actionsCondition
+  // reduxActions
+}
