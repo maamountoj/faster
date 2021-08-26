@@ -106,7 +106,14 @@ const deleteApi = async ({ api, url, params, config }) => {
   return response
 }
 
-const fetchApi = async ({ api, method, url, params, body, config }) => {
+const fetchApi = async ({
+  api,
+  method,
+  url,
+  paramsUrl: params,
+  body,
+  config
+}) => {
   method = method.toLowerCase()
   let error = null
   let response = null

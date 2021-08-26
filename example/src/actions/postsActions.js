@@ -87,7 +87,7 @@ export const {
     method: 'DELETE',
     setPayload: ({ data, res }) => {
       console.log('delete', { data, res })
-      return data.params.id
+      return data.paramsUrl.id
     },
     config: {
       headers: {

@@ -24,8 +24,8 @@ const SinglePostPage = ({ match }) => {
     //dispatch(getPostByIdAction(id))
     //dispatch(getCommentsAction(id))
     /* *** with easy-redux *** */
-    dispatch(getPostByIdAction({ params: { id } }))
-    dispatch(getCommentsAction({ params: { postId: id } }))
+    dispatch(getPostByIdAction({ paramsUrl: { id } }))
+    dispatch(getCommentsAction({ paramsUrl: { postId: id } }))
   }, [dispatch, match])
 
   const renderPost = () => {

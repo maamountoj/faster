@@ -21,61 +21,104 @@ yarn add -D @types/easy-redux
 import { dispatchActionsWithApi } from 'fasti-redux'
 
 const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
+const API_POSTS_URL_BY_USER_ID =
+  'https://jsonplaceholder.typicode.com/posts?userId=[userId]' //replace userId with object params
 const API_POSTS_UPDATE_URL = 'https://jsonplaceholder.typicode.com/posts/[id]'
-export const {
-  getPostsAction,
-  addPostAction,
-  updatePostAction
-} = dispatchActionsWithApi([
+export const { getPostsAction,getPostsByUserIdAction, addPostAction,updatePostAction } = dispatchActionsWithApi([
   {
     name: 'getPosts',
     url: API_POSTS_URL,
-    method: 'get'
+    method: 'GET',
+
+    //** if you must to add config axios *//
+    config: {
+      headers: {
+        'Content-type': 'application/json'
+        //Authorization: 'Your Token' // if you have token
+      }
+    }
+  },
+  {
+    name: 'getPostsByUserId',
+    url: API_POSTS_URL,
+    method: 'GET',
   },
   {
     name: 'addPost',
     url: API_POSTS_URL,
     method: 'POST',
+    //**** if you must to modify payload after call api ***//
     setPayload: ({ data, res }) => {
-      console.log('data', { data, res })
-      res.data.title = 'test'
-      return res.data
-    },
-    config: {
-      headers: {
-        'Content-type': 'application/json'
-      }
+      // data : data come from component ==> {title:'React', body:'Awesome Framewok',userId: 1}
+      // res : response from api axios
+
+      return res.data // value of action.payload
     }
-  },
-  {
-    name: 'updatePost',
-    url: API_POSTS_UPDATE_URL,
-    method: 'PUT',
-    setPayload: ({ data, res }) => {
-      console.log('data', { data, res })
-      return res.data
-    },
-    config: {
-      headers: {
-        'Content-type': 'application/json'
-      }
-    }
+    //** End Modify ***//
   }
 ])
+
+const Posts = ()=>{
+  ............
+  useEffect(() => {
+    dispatch(getPostsAction())
+  }, [dispatch])
+  const getPostByUser = () => {
+   dispatch(getPostByUserIdAction({ params: { id } })) // replace id in variable API_POSTS_URL_BY_USER_ID
+  }
+  const addPost = () => {
+    dispatch(
+      addPostAction({
+        title:'React',
+        body:'Awesome Framewok',
+        userId: 1
+      })
+    )
+  }
+  const updatePost = () => {
+    dispatch(
+      updatePostAction({
+        body: { title, body },// body api
+        params: { id: post?.id }// replace id in variable API_POSTS_URL_BY_USER_ID
+      })
+    )
+  }
+  return ........
+}
 ```
 
-## DispatchActionsWithApi
+## dispatchActionsWithApi
 
-DispatchActionsWithApi is function to create actions.
+dispatchActionsWithApi is function to create actions with call api.
+
+| Options    | Description                                                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| api        | (option) The instance of axios with a custom config                                                                                              |
+| name       | (required) The name (camelCase) of the function action (Required to be the same name of stateKey from dispatchActionsWithApi or dispatchActions) |
+| url        | (required) The url of api                                                                                                                        |
+| method     | (required) The method to fetch api                                                                                                               |
+| config     | (option) The config options for making requests                                                                                                  |
+| setPayload | (option) The callback to modify payload and return with new value. arg(data:data come from component and res come from api)                      |
+
+## dispatchActions
+
+dispatchActions is function to create simple actions.
+
+| Options    | Description                                                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| name       | (required) The name (camelCase) of the function action (Required to be the same name of stateKey from dispatchActionsWithApi or dispatchActions) |
+| setPayload | (option) The callback to modify payload and return with new value                                                                                |
+
+## Create reducers with actionsCondition
+
+## actionsCondition
+
+actionsCondition is function to create simple reducer.
 
 | Options    | Description                                                                                                             |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
-| api        | (option) The instance of axios with a custom config                                                                     |
 | name       | (required) The name (camelCase) of the function action (Required to be the same name of stateKey from actionsCondition) |
-| url        | (required) The url of api                                                                                               |
-| method     | (required) The method to fetch api                                                                                      |
-| config     | (option) The config options for making requests                                                                         |
-| setPayload | (option) The callback to modify state and return with new value                                                         |
+| setPayload | (option) The callback to modify payload and return with new value                                                       |
 
 ## License
 
