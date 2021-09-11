@@ -1,6 +1,6 @@
-import { actionsCondition } from 'easy-redux'
+import { actionsCondition } from 'fast-create-redux'
 
-/* *** without easy-redux *** */
+/* *** without fast-create-redux *** */
 /* import * as actions from '../actions/commentsActions'
 
 export const initialState = {
@@ -22,7 +22,7 @@ export default function commentsReducer(state = initialState, action) {
   }
 } */
 
-/* *** with easy-redux *** */
+/* *** with fast-create-redux *** */
 /* ***************** Post Reducer ***************/
 
 const commentsReducer = actionsCondition([

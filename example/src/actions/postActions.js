@@ -1,6 +1,6 @@
-import { dispatchActionsWithApi } from 'easy-redux'
+import { dispatchActionsWithApi } from 'fast-create-redux'
 
-/* *** without easy-redux *** */
+/* *** without fast-create-redux *** */
 /* export const GET_POST = 'GET POST'
 export const START_LOADING_GET_POST = 'START_LOADING_GET_POST'
 export const STOP_LOADING_GET_POST = 'STOP_LOADING_GET_POST'
@@ -36,7 +36,7 @@ export function getPostAction(id) {
   }
 } */
 /* Became To like this */
-/* *** with easy-redux *** */
+/* *** with fast-create-redux *** */
 const API_POST_BY_ID_URL = `http://localhost:7071/posts/[id]`
 export const { getPostByIdAction } = dispatchActionsWithApi([
   {

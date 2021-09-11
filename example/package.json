@@ -1,5 +1,5 @@
 {
-  "name": "easy-redux-example",
+  "name": "fast-create-redux-example",
   "homepage": "http://maamountoj.github.com/faster",
   "version": "0.0.0",
   "private": true,
@@ -18,7 +18,7 @@
     "babel-core": "^6.26.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "easy-redux": "link:..",
+    "fast-create-redux": "link:..",
     "js-cookie": "^2.2.1",
     "postcss": "^8.1.9",
     "postcss-import": "^13.0.0",

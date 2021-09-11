@@ -1,6 +1,6 @@
-import { dispatchActionsWithApi } from 'easy-redux'
+import { dispatchActionsWithApi } from 'fast-create-redux'
 
-/* *** without easy-redux *** */
+/* *** without fast-create-redux *** */
 /* export const GET_POSTS = 'GET POSTS'
 export const START_LOADING_GET_POSTS = 'START_LOADING_GET_POSTS'
 export const STOP_LOADING_GET_POSTS = 'STOP_LOADING_GET_POSTS'
@@ -34,7 +34,7 @@ export function getPostsAction() {
   }
 } */
 /* Became To like this */
-/* *** with easy-redux *** */
+/* *** with fast-create-redux *** */
 const API_POSTS_URL = 'http://localhost:7071/posts'
 const API_POSTS_UPDATE_URL = 'http://localhost:7071/posts/[id]'
 const API_POSTS_DELETE_URL = 'http://localhost:7071/posts/[id]'

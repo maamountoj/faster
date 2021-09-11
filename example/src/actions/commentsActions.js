@@ -1,6 +1,6 @@
-import { dispatchActionsWithApi } from 'easy-redux'
+import { dispatchActionsWithApi } from 'fast-create-redux'
 
-/* *** without easy-redux *** */
+/* *** without fast-create-redux *** */
 /* 
 
 export const GET_COMMENTS = 'GET_COMMENTS'
@@ -37,7 +37,7 @@ export function getCommentsAction(postId) {
   }
 } */
 /* Became To like this */
-/* *** with easy-redux *** */
+/* *** with fast-create-redux *** */
 const API_COMMENTS_URL = `http://localhost:7071/comments?postId=[postId]`
 export const { getCommentsAction } = dispatchActionsWithApi([
   {

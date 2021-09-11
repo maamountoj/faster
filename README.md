@@ -1,4 +1,4 @@
-# `easy-redux`
+# `fast-create-redux`
 
 > create reducers and actions quickly with types ('START_LOADING','STOP_LOADING','ERROR') will be create automaticaly
 
@@ -7,12 +7,12 @@
 ## Install
 
 ```bash
-npm install --save easy-redux
-npm install --save-dev @types/easy-redux
+npm install --save fast-create-redux
+npm install --save-dev @types/fast-create-redux
 
 # OR
-yarn add  easy-redux
-yarn add -D @types/easy-redux
+yarn add  fast-create-redux
+yarn add -D @types/fast-create-redux
 ```
 
 ## Create actions with dispatchActions and dispatchActionsWithApi
