@@ -47,6 +47,7 @@ const postsReducer = actionsCondition([
         key: 'updatePost',
         setState: (posts, action) => {
           console.log({ posts, action })
+          console.log('action.payload.id ', action.payload.id)
           return [
             ...posts?.data.map((post) =>
               post.id === action.payload.id ? action.payload : post

@@ -22,7 +22,7 @@ export const Post = ({ post, excerpt }) => {
     dispatch(
       updatePostAction({
         body: { title, body },
-        params: { id: post?.id }
+        paramsUrl: { id: post?.id }
       })
     )
     setIsOpen(false)
@@ -38,7 +38,7 @@ export const Post = ({ post, excerpt }) => {
     <>
       <article className={excerpt ? 'post-excerpt' : 'post'}>
         <h2>{post?.title}</h2>
-        <p>{excerpt ? post?.body.substring(0, 100) : post?.body}</p>
+        <p>{excerpt ? post?.body?.substring(0, 100) : post?.body}</p>
 
         {excerpt && (
           <>
@@ -53,7 +53,7 @@ export const Post = ({ post, excerpt }) => {
               onClick={() => {
                 dispatch(
                   deletePostAction({
-                    params: { id: post?.id }
+                    paramsUrl: { id: post?.id }
                   })
                 )
               }}

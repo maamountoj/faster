@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -35,7 +36,9 @@ const PostsPage = () => {
   }
   const renderPosts = () => {
     if (loadingGetPosts) return <p>Loading posts...</p>
-    return posts?.map((post) => <Post key={post.id} post={post} excerpt />)
+    return _.orderBy(posts, ['id'], ['desc'])?.map((post) => (
+      <Post key={post.id} post={post} excerpt />
+    ))
   }
   function openModal() {
     setIsOpen(true)
