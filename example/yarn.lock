@@ -4585,7 +4585,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-"fast-create-redux@link:..":
+"faster-create-redux@link:..":
   version "0.0.0"
   uid ""
 

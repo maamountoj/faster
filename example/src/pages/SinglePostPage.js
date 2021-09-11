@@ -20,10 +20,10 @@ const SinglePostPage = ({ match }) => {
   const comments = useSelector((state) => state.comments.comments?.data)
   useEffect(() => {
     const { id } = match.params
-    /* *** without fast-create-redux *** */
+    /* *** without faster-create-redux *** */
     //dispatch(getPostByIdAction(id))
     //dispatch(getCommentsAction(id))
-    /* *** with fast-create-redux *** */
+    /* *** with faster-create-redux *** */
     dispatch(getPostByIdAction({ paramsUrl: { id } }))
     dispatch(getCommentsAction({ paramsUrl: { postId: id } }))
   }, [dispatch, match])

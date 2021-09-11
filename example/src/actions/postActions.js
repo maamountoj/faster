@@ -1,7 +1,7 @@
-import { dispatchActionsWithApi } from 'fast-create-redux'
+import { dispatchActionsWithApi } from 'faster-create-redux'
 
 /* Became To like this */
-/* *** with fast-create-redux *** */
+/* *** with faster-create-redux *** */
 const API_POST_BY_ID_URL = `http://localhost:7071/posts/[id]`
 export const { getPostByIdAction } = dispatchActionsWithApi([
   {
@@ -26,7 +26,7 @@ export const { getPostByIdAction } = dispatchActionsWithApi([
   }
 ])
 
-/* *** without fast-create-redux *** */
+/* *** without faster-create-redux *** */
 /* export const GET_POST = 'GET POST'
 export const START_LOADING_GET_POST = 'START_LOADING_GET_POST'
 export const STOP_LOADING_GET_POST = 'STOP_LOADING_GET_POST'

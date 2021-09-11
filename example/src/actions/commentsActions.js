@@ -1,7 +1,7 @@
-import { dispatchActionsWithApi } from 'fast-create-redux'
+import { dispatchActionsWithApi } from 'faster-create-redux'
 
 /* Became To like this */
-/* *** with fast-create-redux *** */
+/* *** with faster-create-redux *** */
 const API_COMMENTS_URL = `http://localhost:7071/comments?postId=[postId]`
 export const { getCommentsAction } = dispatchActionsWithApi([
   {
@@ -10,7 +10,7 @@ export const { getCommentsAction } = dispatchActionsWithApi([
     method: 'get'
   }
 ])
-/* *** without fast-create-redux *** */
+/* *** without faster-create-redux *** */
 /* 
 
 export const GET_COMMENTS = 'GET_COMMENTS'

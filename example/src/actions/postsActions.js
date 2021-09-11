@@ -1,7 +1,7 @@
-import { dispatchActionsWithApi } from 'fast-create-redux'
+import { dispatchActionsWithApi } from 'faster-create-redux'
 
 /* Became To like this */
-/* *** with fast-create-redux *** */
+/* *** with faster-create-redux *** */
 const API_POSTS_URL = 'http://localhost:7071/posts'
 const API_POSTS_UPDATE_URL = 'http://localhost:7071/posts/[id]'
 const API_POSTS_DELETE_URL = 'http://localhost:7071/posts/[id]'
@@ -64,7 +64,7 @@ export const {
   }
 ])
 
-/* *** without fast-create-redux *** */
+/* *** without faster-create-redux *** */
 /* export const GET_POSTS = 'GET POSTS'
 export const START_LOADING_GET_POSTS = 'START_LOADING_GET_POSTS'
 export const STOP_LOADING_GET_POSTS = 'STOP_LOADING_GET_POSTS'

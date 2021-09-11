@@ -1,6 +1,6 @@
-import { actionsCondition } from 'fast-create-redux'
+import { actionsCondition } from 'faster-create-redux'
 
-/* *** with fast-create-redux *** */
+/* *** with faster-create-redux *** */
 
 /* ***************** Posts Reducer ***************/
 
@@ -42,7 +42,7 @@ const postsReducer = actionsCondition([
 
 export default postsReducer
 
-/* *** without fast-create-redux *** */
+/* *** without faster-create-redux *** */
 /* import * as actions from '../actions/commentsActions'
 
 export const initialState = {
