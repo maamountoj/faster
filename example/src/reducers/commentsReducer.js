@@ -1,5 +1,14 @@
 import { actionsCondition } from 'fast-create-redux'
 
+/* *** with fast-create-redux *** */
+/* ***************** Post Reducer ***************/
+
+const commentsReducer = actionsCondition([
+  { key: 'getComments', stateKey: 'comments', initStateKey: [] }
+])
+
+export default commentsReducer
+
 /* *** without fast-create-redux *** */
 /* import * as actions from '../actions/commentsActions'
 
@@ -21,12 +30,3 @@ export default function commentsReducer(state = initialState, action) {
       return state
   }
 } */
-
-/* *** with fast-create-redux *** */
-/* ***************** Post Reducer ***************/
-
-const commentsReducer = actionsCondition([
-  { key: 'getComments', stateKey: 'comments', initStateKey: [] }
-])
-
-export default commentsReducer

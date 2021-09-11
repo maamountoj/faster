@@ -7,9 +7,6 @@ import CustomModal from './CustomModal'
 
 export const Post = ({ post, excerpt }) => {
   const dispatch = useDispatch()
-  const loadingUpdatePost = useSelector(
-    (state) => state.posts?.posts?.loadingUpdatePost
-  )
   const [modalIsOpen, setIsOpen] = React.useState(false)
   const [title, setTitle] = React.useState(post?.title)
   const [body, setBody] = React.useState(post?.body)

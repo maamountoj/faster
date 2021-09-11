@@ -1,5 +1,15 @@
 import { dispatchActionsWithApi } from 'fast-create-redux'
 
+/* Became To like this */
+/* *** with fast-create-redux *** */
+const API_COMMENTS_URL = `http://localhost:7071/comments?postId=[postId]`
+export const { getCommentsAction } = dispatchActionsWithApi([
+  {
+    name: 'getComments',
+    url: API_COMMENTS_URL,
+    method: 'get'
+  }
+])
 /* *** without fast-create-redux *** */
 /* 
 
@@ -36,13 +46,3 @@ export function getCommentsAction(postId) {
     dispatch(stopLoadingComments())
   }
 } */
-/* Became To like this */
-/* *** with fast-create-redux *** */
-const API_COMMENTS_URL = `http://localhost:7071/comments?postId=[postId]`
-export const { getCommentsAction } = dispatchActionsWithApi([
-  {
-    name: 'getComments',
-    url: API_COMMENTS_URL,
-    method: 'get'
-  }
-])

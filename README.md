@@ -2,7 +2,7 @@
 
 > create reducers and actions quickly with types ('START_LOADING','STOP_LOADING','ERROR') will be create automaticaly
 
-[![NPM](https://img.shields.io/npm/v/fasti-redux.svg)](https://www.npmjs.com/package/fasti-redux) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/fast-create-redux.svg)](https://www.npmjs.com/package/fast-create-redux) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
@@ -18,7 +18,7 @@ yarn add -D @types/fast-create-redux
 ## Create actions with dispatchActions and dispatchActionsWithApi
 
 ```jsx
-import { dispatchActionsWithApi } from 'fasti-redux'
+import { dispatchActionsWithApi } from 'fast-create-redux'
 
 const API_POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
 const API_POSTS_URL_BY_USER_ID =

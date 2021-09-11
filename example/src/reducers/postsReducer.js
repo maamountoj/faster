@@ -1,38 +1,5 @@
 import { actionsCondition } from 'fast-create-redux'
 
-/* *** without fast-create-redux *** */
-/* import * as actions from '../actions/commentsActions'
-
-export const initialState = {
-  data: [],
-  errorAddPost: "",
-  errorGetPosts: "",
-  loadingAddPost: true,
-  loadingGetPosts: false
-}
-
-export default function postsReducer(state = initialState, action) {
-  switch (action.type) {
-    case START_LOADING_GET_POSTS:
-      return { ...state, loadingGetPosts: true }
-    case GET_POSTS:
-      return {  ...state,posts: action.payload }
-    case STOP_LOADING_GET_POSTS:
-      return { ...state, loadingGetPosts: false }
-    case ERROR_GET_POSTS:
-      return { ...state, errorGetPosts: action.payload }
-    case START_LOADING_ADD_POST:
-      return { ...state, loadingAddPost: true }
-    case ADD_POST:
-      return {  ...state,data: [...state.data ,action.payload] }
-    case STOP_LOADING_ADD_POST:
-      return { ...state, loadingAddPost: false }
-    case ERROR_ADD_POST:
-      return { ...state, errorAddPost: action.payload }
-    default:
-      return state
-  }
-} */
 /* *** with fast-create-redux *** */
 
 /* ***************** Posts Reducer ***************/
@@ -74,3 +41,37 @@ const postsReducer = actionsCondition([
 ])
 
 export default postsReducer
+
+/* *** without fast-create-redux *** */
+/* import * as actions from '../actions/commentsActions'
+
+export const initialState = {
+  data: [],
+  errorAddPost: "",
+  errorGetPosts: "",
+  loadingAddPost: true,
+  loadingGetPosts: false
+}
+
+export default function postsReducer(state = initialState, action) {
+  switch (action.type) {
+    case START_LOADING_GET_POSTS:
+      return { ...state, loadingGetPosts: true }
+    case GET_POSTS:
+      return {  ...state,posts: action.payload }
+    case STOP_LOADING_GET_POSTS:
+      return { ...state, loadingGetPosts: false }
+    case ERROR_GET_POSTS:
+      return { ...state, errorGetPosts: action.payload }
+    case START_LOADING_ADD_POST:
+      return { ...state, loadingAddPost: true }
+    case ADD_POST:
+      return {  ...state,data: [...state.data ,action.payload] }
+    case STOP_LOADING_ADD_POST:
+      return { ...state, loadingAddPost: false }
+    case ERROR_ADD_POST:
+      return { ...state, errorAddPost: action.payload }
+    default:
+      return state
+  }
+} */

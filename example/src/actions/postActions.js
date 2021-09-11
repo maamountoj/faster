@@ -1,5 +1,31 @@
 import { dispatchActionsWithApi } from 'fast-create-redux'
 
+/* Became To like this */
+/* *** with fast-create-redux *** */
+const API_POST_BY_ID_URL = `http://localhost:7071/posts/[id]`
+export const { getPostByIdAction } = dispatchActionsWithApi([
+  {
+    name: 'getPostById',
+    url: API_POST_BY_ID_URL,
+    method: 'get',
+    config: {
+      headers: {
+        //Authorization: 'Your Token' // if you have token
+      }
+    },
+    setPayload: ({ data, res }) => {
+      console.log('data', JSON.stringify(res.data))
+      return res.data
+    },
+    stateKey: 'postById',
+    initStateKey: {},
+    setState: (post, action) => {
+      console.log({ post, action })
+      return { ...action.payload }
+    }
+  }
+])
+
 /* *** without fast-create-redux *** */
 /* export const GET_POST = 'GET POST'
 export const START_LOADING_GET_POST = 'START_LOADING_GET_POST'
@@ -35,28 +61,3 @@ export function getPostAction(id) {
     dispatch(stopLoadingPost())
   }
 } */
-/* Became To like this */
-/* *** with fast-create-redux *** */
-const API_POST_BY_ID_URL = `http://localhost:7071/posts/[id]`
-export const { getPostByIdAction } = dispatchActionsWithApi([
-  {
-    name: 'getPostById',
-    url: API_POST_BY_ID_URL,
-    method: 'get',
-    config: {
-      headers: {
-        //Authorization: 'Your Token' // if you have token
-      }
-    },
-    setPayload: ({ data, res }) => {
-      console.log('data', JSON.stringify(res.data))
-      return res.data
-    },
-    stateKey: 'postById',
-    initStateKey: {},
-    setState: (post, action) => {
-      console.log({ post, action })
-      return { ...action.payload }
-    }
-  }
-])
