@@ -9,7 +9,7 @@ Run backend with this command `json-server --watch -p 7071 db.json`
 npm install -g json-server
 ```
 
-## Run
+## Run FrontEnd
 
 ```bash
 npm install
@@ -17,4 +17,10 @@ npm start
 #OR
 yarn install
 yarn start
+```
+
+## Run Backend
+
+```bash
+json-server --watch -p 7071 db.json
 ```
