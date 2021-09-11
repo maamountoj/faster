@@ -1,8 +1,8 @@
 {
   "homepage": "http://maamountoj.github.com/faster",
   "name": "fast-create-redux",
-  "version": "1.0.2",
-  "description": "create redux quickly",
+  "version": "1.0.0",
+  "description": "create redux faster",
   "author": "maamountoj",
   "license": "MIT",
   "repository": "maamountoj/faster",
